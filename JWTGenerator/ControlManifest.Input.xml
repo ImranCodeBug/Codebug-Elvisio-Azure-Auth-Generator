@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="CodeBug" constructor="JWTGenerator" version="0.0.2" display-name-key="JWT Generator" description-key="JWTGenerator description" control-type="standard">
+  <control namespace="CodeBug" constructor="JWTGenerator" version="0.0.5" display-name-key="JWT Generator" description-key="JWTGenerator description" control-type="standard">
     <property name="BoundField" display-name-key="BoundField" description-key="Bind this field to any text field in the form." of-type="SingleLine.Text" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1" />
+      <css path="../node_modules/bootstrap/dist/css/bootstrap.min.css" order="1" />
     </resources>
+    <property name="ClientId" display-name-key="ClientId" description-key="Client or Application Id" usage="input" required="true" of-type="SingleLine.Text" />
+    <property name="TenantId" display-name-key="TenantId" description-key="Direactor or TenantId for the application registration" usage="input" required="true" of-type="SingleLine.Text" />
   </control>
 </manifest>

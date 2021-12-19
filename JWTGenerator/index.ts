@@ -1,6 +1,17 @@
+import { PublicClientApplication } from "@azure/msal-browser";
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { ConstructMsalConfig } from "./Services/AuthBuilderService";
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { MainContainer } from "./Components/MainContainer";
 
 export class JWTGenerator implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+
+	private _notifyOutputChanged : () => void;
+	private _rootContainer : HTMLDivElement;
+	private _context : ComponentFramework.Context<IInputs>;
+	private _state : ComponentFramework.Dictionary
+
 
 	/**
 	 * Empty constructor.
@@ -18,9 +29,14 @@ export class JWTGenerator implements ComponentFramework.StandardControl<IInputs,
 	 * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
 	 * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
 	 */
-	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
+	public init(context: ComponentFramework.Context<IInputs>, 
+		notifyOutputChanged: () => void, 
+		state: ComponentFramework.Dictionary, container:HTMLDivElement): void
 	{
-		// Add control initialization code
+		this._notifyOutputChanged = notifyOutputChanged;
+		this._rootContainer = container;
+		this._state = state;
+		this._context = context;
 	}
 
 
@@ -29,8 +45,15 @@ export class JWTGenerator implements ComponentFramework.StandardControl<IInputs,
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
-	{
-		// Add code to update control view
+	{		
+		const clientId = context.parameters.ClientId.raw;
+		const appId = context.parameters.TenantId.raw;
+		const msalConfig = ConstructMsalConfig(clientId!, appId!);
+		const msalInstance = new PublicClientApplication(msalConfig);
+		
+		ReactDOM.render(React.createElement(MainContainer, {
+			instance : msalInstance
+		}), this._rootContainer);
 	}
 
 	/**
@@ -48,6 +71,6 @@ export class JWTGenerator implements ComponentFramework.StandardControl<IInputs,
 	 */
 	public destroy(): void
 	{
-		// Add code to cleanup control if necessary
+		ReactDOM.unmountComponentAtNode(this._rootContainer);
 	}
 }
