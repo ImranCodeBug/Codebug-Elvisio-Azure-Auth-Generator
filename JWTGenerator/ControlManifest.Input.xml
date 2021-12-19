@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="CodeBug" constructor="JWTGenerator" version="0.0.7" display-name-key="JWT Generator" description-key="JWTGenerator description" control-type="standard">
+  <control namespace="CodeBug" constructor="JWTGenerator" version="0.0.8" display-name-key="JWT Generator" description-key="JWTGenerator description" control-type="standard">
     <property name="BoundField" display-name-key="BoundField" description-key="Bind this field to any text field in the form." of-type="SingleLine.Text" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1" />
