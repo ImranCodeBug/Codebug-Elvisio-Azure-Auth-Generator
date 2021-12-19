@@ -48,7 +48,8 @@ export class JWTGenerator implements ComponentFramework.StandardControl<IInputs,
 	{		
 		const clientId = context.parameters.ClientId.raw;
 		const appId = context.parameters.TenantId.raw;
-		const msalConfig = ConstructMsalConfig(clientId!, appId!);
+		const redirectUrl = context.parameters.RedirectUrl.raw;
+		const msalConfig = ConstructMsalConfig(clientId!, appId!, redirectUrl!);
 		const msalInstance = new PublicClientApplication(msalConfig);
 		
 		ReactDOM.render(React.createElement(MainContainer, {

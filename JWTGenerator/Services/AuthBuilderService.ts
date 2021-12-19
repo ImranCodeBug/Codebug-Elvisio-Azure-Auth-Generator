@@ -1,8 +1,9 @@
-export const ConstructMsalConfig = (clientId : string, tenantId : string) => {
+export const ConstructMsalConfig = (clientId : string, tenantId : string, redirectUrl : string) => {
     return  {
         auth: {
           clientId: clientId,
-          authority: `https://login.microsoftonline.com/${tenantId}`, 
+          authority: `https://login.microsoftonline.com/${tenantId}`,
+          redirectUri : redirectUrl
         },
         cache: {
           cacheLocation: "sessionStorage", // This configures where your cache will be stored
