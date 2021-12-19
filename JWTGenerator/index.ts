@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { MainContainer } from "./Components/MainContainer";
 
-export class JWTGenerator implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+export class ElvisioAuthGenerator implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
 	private _notifyOutputChanged : () => void;
 	private _rootContainer : HTMLDivElement;
