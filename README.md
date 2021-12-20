@@ -6,6 +6,8 @@ This is the code for the Power App Component Framework code for **Elvisio Authen
 Setting up application registration is discussed in this [MS Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) 
 
 Once the appregistion is created go to **Authentication** section of the app registration and add a **Platform** as single page application. One of the Redirect URIs has to be the Dynamics 365 instance in which you want to deploy the control in.
+
+![Redirect URI](./ReadmeImages/SinglePageApplication.png)
  
 
 ## Usage
