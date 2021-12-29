@@ -6,24 +6,29 @@ import CopyButtonContainer from './CopyButtonContainer';
 
 interface Props {
     authResult: string,
-    CopyAuthObject : () => void
-    CopyIdToken : () => void,
-    CopyAccessToken : () => void
-    CopyState : boolean
+    CopyAuthObject: () => void
+    CopyIdToken: () => void,
+    CopyAccessToken: () => void
+    CopyState: boolean,
+    showScopeSelector: boolean,
+    toggleScopeSelector : (newValue : boolean) => void
 }
 
 const AuthResultComponent = (props: Props) => {
     return (
-        <div className='row text-start'>
-            <div className='col-12 position-relative'>
-                <CopyButtonContainer CopyAuthObject={props.CopyAuthObject} 
-                CopyIdToken={props.CopyIdToken} CopyAccessToken={props.CopyAccessToken}
-                CopyState={props.CopyState}></CopyButtonContainer>
-                <SyntaxHighlighter language="json" style={tomorrow} wrapLongLines wrapLines>
-                    {props.authResult}
-                </SyntaxHighlighter>
+        <>
+            <div className='row text-start'>
+                <div className='col-12 position-relative'>
+                    <CopyButtonContainer CopyAuthObject={props.CopyAuthObject}
+                        CopyIdToken={props.CopyIdToken} CopyAccessToken={props.CopyAccessToken}
+                        CopyState={props.CopyState} showScopeSelector={props.showScopeSelector}
+                        toggleScopeSelector={props.toggleScopeSelector}></CopyButtonContainer>
+                    <SyntaxHighlighter language="json" style={tomorrow} wrapLongLines wrapLines>
+                        {props.authResult}
+                    </SyntaxHighlighter>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

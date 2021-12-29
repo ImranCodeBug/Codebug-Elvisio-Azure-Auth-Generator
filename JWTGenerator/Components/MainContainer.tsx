@@ -11,6 +11,7 @@ export const MainContainer = (props: Props) => {
     const [authResultText, setAuthResultText] = React.useState<string | "">("");    
     const [authResult, setAuthResult] = React.useState<AuthenticationResult | null>(null);
     const [copyState, setCopyState] = React.useState<boolean>(false);
+    const [showScopeSelector, setShowScopeSelector] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         const login = async () => {
@@ -60,7 +61,9 @@ const copyIntoClipboard = (textToBeCopied : string) => {
             CopyAuthObject={copyAuthObject}
             CopyAccessToken={copyAccessToken}
             CopyIdToken={copyIdToken}
-            CopyState={copyState}></AuthResultComponent>
+            CopyState={copyState}
+            showScopeSelector={showScopeSelector}
+            toggleScopeSelector={setShowScopeSelector}></AuthResultComponent>
             
         </div>
     )
