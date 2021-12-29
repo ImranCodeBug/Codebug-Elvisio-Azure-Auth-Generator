@@ -8,9 +8,11 @@ interface Props {
     CopyAuthObject : () => void
     CopyIdToken : () => void,
     CopyAccessToken : () => void
-    CopyState : boolean,
-    showScopeSelector : boolean,
-    toggleScopeSelector : (currentState : boolean) => void
+    CopyState : boolean,    
+    toggleScopeSelector : (currentState : boolean) => void,
+    showScopeSelector: boolean
+    acquireCustomAccessToken : (scopeString : string | undefined) => Promise<void>,
+    acquireTokenTokenInProgress : boolean
 }
 
 
@@ -39,7 +41,9 @@ const CopyButtonContainer = (props: Props) => {
             <button type="button" className="btn btn-outline-primary" onClick={() => props.CopyAccessToken()}>Copy Access Token</button>
             <button type="button" className="btn btn-outline-primary" onClick={() => copyAccessTokenOnClick()}>Generate Access Token</button>
             
-            <ScopeSelectorComponent showScopeSelector={props.showScopeSelector}></ScopeSelectorComponent>
+            <ScopeSelectorComponent showScopeSelector={props.showScopeSelector} 
+            acquireCustomAccessToken={props.acquireCustomAccessToken}
+            acquireTokenTokenInProgress={props.acquireTokenTokenInProgress}></ScopeSelectorComponent>
         </div>
 
         

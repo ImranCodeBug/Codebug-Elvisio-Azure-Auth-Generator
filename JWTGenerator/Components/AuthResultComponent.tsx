@@ -11,7 +11,9 @@ interface Props {
     CopyAccessToken: () => void
     CopyState: boolean,
     showScopeSelector: boolean,
-    toggleScopeSelector : (newValue : boolean) => void
+    toggleScopeSelector : (newValue : boolean) => void,
+    acquireCustomAccessToken : (scopeString : string | undefined) => Promise<void>,
+    acquireAccessTokenInProgress : boolean
 }
 
 const AuthResultComponent = (props: Props) => {
@@ -22,7 +24,9 @@ const AuthResultComponent = (props: Props) => {
                     <CopyButtonContainer CopyAuthObject={props.CopyAuthObject}
                         CopyIdToken={props.CopyIdToken} CopyAccessToken={props.CopyAccessToken}
                         CopyState={props.CopyState} showScopeSelector={props.showScopeSelector}
-                        toggleScopeSelector={props.toggleScopeSelector}></CopyButtonContainer>
+                        toggleScopeSelector={props.toggleScopeSelector}
+                        acquireTokenTokenInProgress={props.acquireAccessTokenInProgress}
+                        acquireCustomAccessToken={props.acquireCustomAccessToken}></CopyButtonContainer>
                     <SyntaxHighlighter language="json" style={tomorrow} wrapLongLines wrapLines>
                         {props.authResult}
                     </SyntaxHighlighter>
