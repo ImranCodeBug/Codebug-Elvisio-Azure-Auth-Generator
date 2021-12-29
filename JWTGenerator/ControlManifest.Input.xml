@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="CodeBug" constructor="ElvisioAuthGenerator" version="0.0.11" display-name-key="Azure Authentication Result" description-key="Generate MSAL Authentication Result from Azure Active directory (for Dynamics 365 Online Only)" control-type="standard">
+  <control namespace="CodeBug" constructor="ElvisioAuthGenerator" version="0.0.12" display-name-key="Azure Authentication Result" description-key="Generate MSAL Authentication Result from Azure Active directory (for Dynamics 365 Online Only)" control-type="standard">
     <property name="BoundField" display-name-key="BoundField" description-key="Bind this field to any text field in the form." of-type="SingleLine.Text" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1" />
